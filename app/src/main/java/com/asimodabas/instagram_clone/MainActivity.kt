@@ -22,6 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        val currentUser = auth.currentUser
+        if (currentUser!=null){
+            val intent = Intent(this,FeedActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.signInButton.setOnClickListener {
             signInClicked()
         }
@@ -33,6 +40,20 @@ class MainActivity : AppCompatActivity() {
 
     fun signInClicked() {
 
+        val email = binding.emailText.text.toString()
+        val password = binding.passwordText.text.toString()
+
+        if (email.equals("") || password.equals("")) {
+            Toast.makeText(this, "Enter E-Mail and Password!", Toast.LENGTH_LONG).show()
+        } else {
+            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                val intent = Intent(this,FeedActivity::class.java)
+                startActivity(intent)
+                finish()
+            }.addOnFailureListener {
+                Toast.makeText(this,it.localizedMessage,Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     fun signUpClicked() {
