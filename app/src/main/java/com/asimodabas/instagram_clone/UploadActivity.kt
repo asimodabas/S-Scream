@@ -16,6 +16,12 @@ import androidx.core.content.ContextCompat
 import com.asimodabas.instagram_clone.databinding.ActivityMainBinding
 import com.asimodabas.instagram_clone.databinding.ActivityUploadBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 class UploadActivity : AppCompatActivity() {
 
@@ -23,14 +29,23 @@ class UploadActivity : AppCompatActivity() {
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     var selectedPicture : Uri? = null
+    private lateinit var auth : FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var storage : FirebaseStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
-
         binding = ActivityUploadBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        registerLauncher()
+
+        auth = Firebase.auth
+        firestore = Firebase.firestore
+        storage = FirebaseStorage.getInstance()
+
 
         binding.uploadButton.setOnClickListener {
             upload(it)
@@ -39,10 +54,22 @@ class UploadActivity : AppCompatActivity() {
             selectImage(it)
         }
 
-        registerLauncher()
     }
 
     fun upload(view: View) {
+
+        val reference = storage.reference
+        val imageReference = reference.child("images/image.jpg")
+
+        if (selectedPicture != null){
+            imageReference.putFile(selectedPicture!!).addOnCanceledListener {
+                //Url
+
+            }.addOnFailureListener {
+                Toast.makeText(this,it.localizedMessage,Toast.LENGTH_LONG).show()
+            }
+        }
+
 
     }
 
