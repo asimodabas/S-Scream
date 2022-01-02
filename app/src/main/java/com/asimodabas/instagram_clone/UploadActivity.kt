@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 class UploadActivity : AppCompatActivity() {
 
@@ -58,8 +59,11 @@ class UploadActivity : AppCompatActivity() {
 
     fun upload(view: View) {
 
+        val uuid = UUID.randomUUID()
+        val imageName = "$uuid.jpg"
+
         val reference = storage.reference
-        val imageReference = reference.child("images/image.jpg")
+        val imageReference = reference.child("images/").child(imageName)
 
         if (selectedPicture != null){
             imageReference.putFile(selectedPicture!!).addOnCanceledListener {
