@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.asimodabas.instagram_clone.databinding.RecyclerRowBinding
 import com.asimodabas.instagram_clone.model.Post
+import com.squareup.picasso.Picasso
 
 class FeedRecyclerAdapter(private val postList : ArrayList<Post>) : RecyclerView.Adapter<FeedRecyclerAdapter.PostHolder>() {
 
@@ -20,6 +21,7 @@ class FeedRecyclerAdapter(private val postList : ArrayList<Post>) : RecyclerView
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         holder.binding.RecyclerEmailText.text = postList.get(position).email
         holder.binding.recyclerCommentText.text = postList.get(position).comment
+        Picasso.get().load(postList.get(position).downloadUrl).into(holder.binding.recyclerImageView2)
     }
 
     override fun getItemCount(): Int {
