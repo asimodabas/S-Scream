@@ -1,4 +1,4 @@
-package com.asimodabas.instagram_clone
+package com.asimodabas.instagram_clone.view
 
 import android.Manifest
 import android.content.Intent
@@ -13,7 +13,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.asimodabas.instagram_clone.databinding.ActivityMainBinding
+import com.asimodabas.instagram_clone.R
 import com.asimodabas.instagram_clone.databinding.ActivityUploadBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp

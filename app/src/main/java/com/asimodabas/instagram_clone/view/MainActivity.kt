@@ -1,4 +1,4 @@
-package com.asimodabas.instagram_clone
+package com.asimodabas.instagram_clone.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
         if (currentUser!=null){
-            val intent = Intent(this,FeedActivity::class.java)
+            val intent = Intent(this, FeedActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter E-Mail and Password!", Toast.LENGTH_LONG).show()
         } else {
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                val intent = Intent(this,FeedActivity::class.java)
+                val intent = Intent(this, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 //Success
-                val intent = Intent(this@MainActivity,FeedActivity::class.java)
+                val intent = Intent(this@MainActivity, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
