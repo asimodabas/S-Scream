@@ -62,7 +62,10 @@ class FeedActivity : AppCompatActivity() {
                         val userEmail = document.get("userEmail") as String
                         val downloadUrl = document.get("downloadUrl") as String
 
-                        val post = Post(userEmail,comment,downloadUrl)
+                        val name = document.get("name") as String
+                        val surname = document.get("surname") as String
+
+                        val post = Post(userEmail,comment,downloadUrl,name,surname)
                         postArrayList.add(post)
                     }
                     feedAdapter.notifyDataSetChanged()

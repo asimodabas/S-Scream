@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.asimodabas.instagram_clone.databinding.ActivityMainBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter E-Mail and Password!", Toast.LENGTH_LONG).show()
         } else {
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                val intent = Intent(this, FeedActivity::class.java)
+                val intent = Intent(this, SecondActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
@@ -61,12 +64,14 @@ class MainActivity : AppCompatActivity() {
         val email = binding.emailText.text.toString()
         val password = binding.passwordText.text.toString()
 
-        if (email.equals("") || password.equals("")) {
-            Toast.makeText(this, "Enter E-Mail and Password!", Toast.LENGTH_LONG).show()
+
+
+        if (email.equals("") || password.equals("") ) {
+            Toast.makeText(this, "Please fill in all the blanks!", Toast.LENGTH_LONG).show()
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 //Success
-                val intent = Intent(this@MainActivity, FeedActivity::class.java)
+                val intent = Intent(this@MainActivity, SecondActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {

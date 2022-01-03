@@ -84,6 +84,9 @@ class UploadActivity : AppCompatActivity() {
                         postMap.put("comment",binding.commentText.text.toString())
                         postMap.put("date",Timestamp.now())
 
+                        postMap.put("name",binding.nameText.text.toString())
+                        postMap.put("surname",binding.surnameText.text.toString())
+
                         firestore.collection("Posts").add(postMap).addOnSuccessListener {
                             finish()
 
