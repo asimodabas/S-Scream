@@ -5,7 +5,7 @@ data class Post(
     val comment: String,
     val downloadUrl: String,
     val name: String,
-    val surname: String
+    val surname: String,
 ) {
 
 }

@@ -26,6 +26,8 @@ class FeedActivity : AppCompatActivity() {
     private lateinit var db : FirebaseFirestore
     private lateinit var postArrayList: ArrayList<Post>
     private lateinit var feedAdapter : FeedRecyclerAdapter
+    private var insanmi : Boolean? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,48 +35,83 @@ class FeedActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        insanmi = intent.getBooleanExtra("insanmi",true)
+
         auth = Firebase.auth
         db = Firebase.firestore
 
         postArrayList = ArrayList<Post>()
 
-        getData()
+        getData(insanmi!!)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        feedAdapter = FeedRecyclerAdapter(postArrayList)
+        feedAdapter = FeedRecyclerAdapter(this,postArrayList)
         binding.recyclerView.adapter = feedAdapter
     }
 
-    private fun getData(){
-        db.collection("Posts").orderBy("date", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
-        if (error != null){
-            Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
-        }else{
-            if (value != null){
-                if (!value.isEmpty){
+    private fun getData(insanmi:Boolean){
+        if (insanmi){
+            db.collection("insan").orderBy("date", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
+                if (error != null){
+                    Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
+                }else{
+                    if (value != null){
+                        if (!value.isEmpty){
 
-                    val documents = value.documents
-                    postArrayList.clear()
+                            val documents = value.documents
+                            postArrayList.clear()
 
-                    for (document in documents){
+                            for (document in documents){
 
-                        val comment = document.get("comment") as String
-                        val userEmail = document.get("userEmail") as String
-                        val downloadUrl = document.get("downloadUrl") as String
+                                val comment = document.get("comment") as String
+                                val userEmail = document.get("userEmail") as String
+                                val downloadUrl = document.get("downloadUrl") as String
 
-                        val name = document.get("name") as String
-                        val surname = document.get("surname") as String
+                                val name = document.get("name") as String
+                                val surname = document.get("surname") as String
 
-                        val post = Post(userEmail,comment,downloadUrl,name,surname)
-                        postArrayList.add(post)
+                                val post = Post(userEmail,comment,downloadUrl,name,surname)
+                                postArrayList.add(post)
+                            }
+                            feedAdapter.notifyDataSetChanged()
+                        }
                     }
-                    feedAdapter.notifyDataSetChanged()
                 }
+
+
+            }
+        }else{
+            db.collection("hayvan").orderBy("date", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
+                if (error != null){
+                    Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
+                }else{
+                    if (value != null){
+                        if (!value.isEmpty){
+
+                            val documents = value.documents
+                            postArrayList.clear()
+
+                            for (document in documents){
+
+                                val comment = document.get("comment") as String
+                                val userEmail = document.get("userEmail") as String
+                                val downloadUrl = document.get("downloadUrl") as String
+
+                                val name = document.get("name") as String
+                                val surname = document.get("surname") as String
+
+                                val post = Post(userEmail,comment,downloadUrl,name,surname)
+                                postArrayList.add(post)
+                            }
+                            feedAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+
+
             }
         }
 
-
-        }
 
     }
 
@@ -90,6 +127,7 @@ class FeedActivity : AppCompatActivity() {
 
         if (item.itemId == R.id.add_post){
             val intent = Intent(this, UploadActivity::class.java)
+            intent.putExtra("insanmi",insanmi)
             startActivity(intent)
         }else if (item.itemId == R.id.signout){
             auth.signOut()
