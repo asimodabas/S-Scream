@@ -29,23 +29,26 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".view.MapsActivity"
             android:exported="false"
-            android:label="@string/title_activity_maps" />
+            android:label="S-Scream" />
         <activity
             android:name=".view.SecondActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="S-Scream"/>
         <activity
             android:name=".view.UploadActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="S-Scream"/>
         <activity
             android:name=".view.FeedActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="S-Scream"/>
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="S-Scream">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
