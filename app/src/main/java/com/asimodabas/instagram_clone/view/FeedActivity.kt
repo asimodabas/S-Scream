@@ -51,7 +51,7 @@ class FeedActivity : AppCompatActivity() {
 
     private fun getData(insanmi:Boolean){
         if (insanmi){
-            db.collection("insan").orderBy("date", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
+            db.collection("insan").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
                 if (error != null){
                     Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
                 }else{
@@ -81,7 +81,7 @@ class FeedActivity : AppCompatActivity() {
 
             }
         }else{
-            db.collection("hayvan").orderBy("date", Query.Direction.ASCENDING).addSnapshotListener { value, error ->
+            db.collection("hayvan").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
                 if (error != null){
                     Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
                 }else{
