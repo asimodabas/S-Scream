@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val currentUser = auth.currentUser
-        if (currentUser!=null){
+        if (currentUser != null) {
             val intent = Intent(this, FeedActivity::class.java)
             startActivity(intent)
             finish()
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
-                Toast.makeText(this,it.localizedMessage,Toast.LENGTH_LONG).show()
+                Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        if (email.equals("") || password.equals("") ) {
+        if (email.equals("") || password.equals("")) {
             Toast.makeText(this, "Please fill in all the blanks!", Toast.LENGTH_LONG).show()
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }.addOnFailureListener {
                 //Failed
-                Toast.makeText(this,it.localizedMessage,Toast.LENGTH_LONG).show()
+                Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
             }
         }
     }

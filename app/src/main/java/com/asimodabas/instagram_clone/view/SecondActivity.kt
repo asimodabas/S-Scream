@@ -23,15 +23,16 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    fun insan(){
-        val intent = Intent(this,FeedActivity::class.java)
-        intent.putExtra("insanmi",true)
+    fun insan() {
+        val intent = Intent(this, FeedActivity::class.java)
+        intent.putExtra("insanmi", true)
         startActivity(intent)
 
     }
-    fun hayvan(){
-        val intent = Intent(this,FeedActivity::class.java)
-        intent.putExtra("insanmi",false)
+
+    fun hayvan() {
+        val intent = Intent(this, FeedActivity::class.java)
+        intent.putExtra("insanmi", false)
         startActivity(intent)
 
     }

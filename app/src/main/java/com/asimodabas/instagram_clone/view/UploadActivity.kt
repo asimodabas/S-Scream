@@ -92,7 +92,7 @@ class UploadActivity : AppCompatActivity() {
                         postMap.put("name", binding.nameText.text.toString())
                         postMap.put("surname", binding.surnameText.text.toString())
 
-                        if (insanmi){
+                        if (insanmi) {
                             firestore.collection("insan").add(postMap).addOnSuccessListener {
                                 finish()
 
@@ -104,7 +104,7 @@ class UploadActivity : AppCompatActivity() {
                                 ).show()
                             }
 
-                        }else{
+                        } else {
                             firestore.collection("hayvan").add(postMap).addOnSuccessListener {
                                 finish()
 
