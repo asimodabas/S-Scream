@@ -51,7 +51,6 @@ class UploadActivity : AppCompatActivity() {
         firestore = Firebase.firestore
         storage = FirebaseStorage.getInstance()
 
-
         binding.uploadButton.setOnClickListener {
             upload(insanmi)
         }

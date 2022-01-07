@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intent = Intent(this, FeedActivity::class.java)
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener {
             signUpClicked()
         }
+
     }
 
     fun signInClicked() {
