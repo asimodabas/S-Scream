@@ -55,6 +55,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
         selectedLatitude = 0.0
         selectedLongitude = 0.0
+
+        binding.saveButton.setOnClickListener {
+            save()
+        }
     }
 
     /**
@@ -165,6 +169,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
         selectedLatitude = p0.latitude
         selectedLongitude = p0.longitude
+
+    }
+    fun save(){
 
     }
 }
