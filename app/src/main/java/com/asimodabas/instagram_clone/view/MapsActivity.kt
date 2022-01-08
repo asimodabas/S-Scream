@@ -1,5 +1,6 @@
 package com.asimodabas.instagram_clone.view
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
@@ -12,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import com.asimodabas.instagram_clone.R
 import com.asimodabas.instagram_clone.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -171,7 +173,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         selectedLongitude = p0.longitude
 
     }
-    fun save(){
 
+    fun save() {
+        val intent = Intent(this, UploadActivity::class.java)
+        sharedPreferences.edit {
+            putString("latitude",selectedLatitude!!.toString())
+            putString("longitude",selectedLongitude!!.toString())
+        }
+        startActivity(intent)
+        finish()
     }
 }

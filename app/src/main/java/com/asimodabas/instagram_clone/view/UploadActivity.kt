@@ -2,6 +2,7 @@ package com.asimodabas.instagram_clone.view
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ class UploadActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,11 @@ class UploadActivity : AppCompatActivity() {
 
         registerLauncher()
 
+        sharedPreferences = this.getSharedPreferences(
+            "com.asimodabas.instagram_clone.view",
+            MODE_PRIVATE
+        )
+
         auth = Firebase.auth
         firestore = Firebase.firestore
         storage = FirebaseStorage.getInstance()
@@ -57,7 +64,9 @@ class UploadActivity : AppCompatActivity() {
         binding.imageView.setOnClickListener {
             selectImage(it)
         }
-
+        binding.buttonMap.setOnClickListener {
+            goMap()
+        }
     }
 
     fun upload(insanmi: Boolean) {
@@ -87,6 +96,8 @@ class UploadActivity : AppCompatActivity() {
                         postMap.put("comment", binding.commentText.text.toString())
                         postMap.put("date", Timestamp.now())
                         postMap.put("imageName", imageName)
+                        postMap.put("latitude",sharedPreferences.getString("latitude","0")!!)
+                        postMap.put("longitude",sharedPreferences.getString("longitude","0")!!)
 
                         postMap.put("name", binding.nameText.text.toString())
                         postMap.put("surname", binding.surnameText.text.toString())
@@ -185,5 +196,11 @@ class UploadActivity : AppCompatActivity() {
             }
 
 
+    }
+
+    fun goMap() {
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
