@@ -71,7 +71,10 @@ class FeedActivity : AppCompatActivity() {
                                     val name = document.get("name") as String
                                     val surname = document.get("surname") as String
 
-                                    val post = Post(userEmail, comment, downloadUrl, name, surname)
+                                    val latitude = document.get("latitude") as String
+                                    val longitude = document.get("longitude") as String
+
+                                    val post = Post(userEmail, comment, downloadUrl, name, surname,latitude, longitude)
                                     postArrayList.add(post)
                                 }
                                 feedAdapter.notifyDataSetChanged()
@@ -102,7 +105,10 @@ class FeedActivity : AppCompatActivity() {
                                     val name = document.get("name") as String
                                     val surname = document.get("surname") as String
 
-                                    val post = Post(userEmail, comment, downloadUrl, name, surname)
+                                    val latitude = document.get("latitude") as String
+                                    val longitude = document.get("longitude") as String
+
+                                    val post = Post(userEmail, comment, downloadUrl, name, surname,latitude, longitude)
                                     postArrayList.add(post)
                                 }
                                 feedAdapter.notifyDataSetChanged()

@@ -6,6 +6,8 @@ data class Post(
     val downloadUrl: String,
     val name: String,
     val surname: String,
+    val latitude: String,
+    val longitude: String
 ) {
 
 }
