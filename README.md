@@ -1,4 +1,4 @@
-# Clone-Attempt
+# S-Scream
 
 * Bilgisayar Mühendisliği tasarım dersi için hazırlanmış bir projedir.<br>
 * Projenin evrensel olarak kullanılması hedeflendiği için arayüz ve kodlar ingilizce olarak yazılmıştır.<br>
