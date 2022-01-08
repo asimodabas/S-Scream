@@ -37,7 +37,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
     private var trackBoolean: Boolean? = null
     private var selectedLatitude: Double? = null
     private var selectedLongitude: Double? = null
-    var postFromMain : Post? = null
+    var postFromMain: Post? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +72,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
         val intent = intent
         val info = intent.getStringExtra("info")
 
-        if (info != "old"){
+        if (info != "old") {
             locationManager = this.getSystemService(LOCATION_SERVICE) as LocationManager
 
             locationListener = object : LocationListener {
@@ -113,7 +113,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                     0f,
                     locationListener
                 )
-                val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                val lastLocation =
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
                 if (lastLocation != null) {
                     val lastUserLocation = LatLng(lastLocation.latitude, lastLocation.longitude)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastUserLocation, 15f))
@@ -121,15 +122,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                 mMap.isMyLocationEnabled = true
             }
 
-        }else{
+        } else {
             mMap.clear()
 
             postFromMain = intent.getSerializableExtra("selectedPost") as? Post
 
             postFromMain?.let {
-                val latLng = LatLng(it.latitude.toDouble(),it.longitude.toDouble())
+                val latLng = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
                 mMap.addMarker(MarkerOptions().position(latLng).title(it.name))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
 
             }

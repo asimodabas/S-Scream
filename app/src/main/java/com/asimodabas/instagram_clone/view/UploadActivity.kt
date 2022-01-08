@@ -96,8 +96,8 @@ class UploadActivity : AppCompatActivity() {
                         postMap.put("comment", binding.commentText.text.toString())
                         postMap.put("date", Timestamp.now())
                         postMap.put("imageName", imageName)
-                        postMap.put("latitude",sharedPreferences.getString("latitude","0")!!)
-                        postMap.put("longitude",sharedPreferences.getString("longitude","0")!!)
+                        postMap.put("latitude", sharedPreferences.getString("latitude", "0")!!)
+                        postMap.put("longitude", sharedPreferences.getString("longitude", "0")!!)
 
                         postMap.put("name", binding.nameText.text.toString())
                         postMap.put("surname", binding.surnameText.text.toString())
