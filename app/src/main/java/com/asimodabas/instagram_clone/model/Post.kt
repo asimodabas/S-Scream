@@ -1,5 +1,7 @@
 package com.asimodabas.instagram_clone.model
 
+import java.io.Serializable
+
 data class Post(
     val email: String,
     val comment: String,
@@ -8,6 +10,6 @@ data class Post(
     val surname: String,
     val latitude: String,
     val longitude: String
-) {
+):Serializable {
 
 }

@@ -30,7 +30,10 @@ class FeedRecyclerAdapter(val activity: Activity, private val postList: ArrayLis
 
         holder.binding.layout.setOnClickListener {
             val intent = Intent(activity, MapsActivity::class.java)
+            intent.putExtra("selectedPost",postList.get(position))
+            intent.putExtra("info","old")
             activity.startActivity(intent)
+
         }
 
         holder.binding.recyclerNameText.text = postList.get(position).name
