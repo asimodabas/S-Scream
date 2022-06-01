@@ -77,7 +77,6 @@ class UploadActivity : AppCompatActivity() {
         val reference = storage.reference
         val imageReference = reference.child("images/").child(imageName)
 
-
         if (selectedPicture != null) {
 
             imageReference.putFile(selectedPicture!!).addOnSuccessListener {
@@ -113,7 +112,6 @@ class UploadActivity : AppCompatActivity() {
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
-
                         } else {
                             firestore.collection("hayvan").add(postMap).addOnSuccessListener {
                                 finish()
@@ -126,17 +124,12 @@ class UploadActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-
                     }
-
                 }
-
             }.addOnFailureListener {
                 Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
             }
         }
-
-
     }
 
     fun selectImage(view: View) {
@@ -192,10 +185,7 @@ class UploadActivity : AppCompatActivity() {
                     //Permission denied
                     Toast.makeText(this, "Permission needed", Toast.LENGTH_LONG).show()
                 }
-
             }
-
-
     }
 
     fun goMap() {

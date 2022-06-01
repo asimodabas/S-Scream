@@ -83,7 +83,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
                         sharedPreferences.edit().putBoolean("trackBoolean", true).apply()
                     }
-
                 }
             }
             if (ContextCompat.checkSelfPermission(
@@ -132,12 +131,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                 mMap.addMarker(MarkerOptions().position(latLng).title(it.name))
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
-
             }
-
         }
-
-
     }
 
     private fun registerLauncher() {
@@ -174,7 +169,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                     Toast.makeText(this@MapsActivity, "Permission needed !", Toast.LENGTH_LONG)
                         .show()
                 }
-
             }
     }
 

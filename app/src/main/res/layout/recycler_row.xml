@@ -82,5 +82,4 @@
             app:layout_constraintTop_toBottomOf="@+id/recyclerImageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.appcompat.widget.LinearLayoutCompat>

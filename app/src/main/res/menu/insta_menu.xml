@@ -3,4 +3,5 @@
 
     <item android:id="@+id/add_post" android:title="Add Post"></item>
     <item android:id="@+id/signout" android:title="Sign Out"></item>
+
 </menu>

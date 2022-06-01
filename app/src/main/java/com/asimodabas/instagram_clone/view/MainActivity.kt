@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         auth = Firebase.auth
-
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -40,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener {
             signUpClicked()
         }
-
     }
 
     fun signInClicked() {
@@ -65,8 +62,6 @@ class MainActivity : AppCompatActivity() {
 
         val email = binding.emailText.text.toString()
         val password = binding.passwordText.text.toString()
-
-
 
         if (email.equals("") || password.equals("")) {
             Toast.makeText(this, "Please fill in all the blanks!", Toast.LENGTH_LONG).show()
