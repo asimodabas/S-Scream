@@ -27,13 +27,11 @@ class SecondActivity : AppCompatActivity() {
         val intent = Intent(this, FeedActivity::class.java)
         intent.putExtra("insanmi", true)
         startActivity(intent)
-
     }
 
     fun hayvan() {
         val intent = Intent(this, FeedActivity::class.java)
         intent.putExtra("insanmi", false)
         startActivity(intent)
-
     }
 }

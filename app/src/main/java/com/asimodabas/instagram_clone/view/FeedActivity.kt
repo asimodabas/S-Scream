@@ -89,8 +89,6 @@ class FeedActivity : AppCompatActivity() {
                             }
                         }
                     }
-
-
                 }
         } else {
             db.collection("hayvan").orderBy("date", Query.Direction.DESCENDING)
@@ -131,12 +129,8 @@ class FeedActivity : AppCompatActivity() {
                             }
                         }
                     }
-
-
                 }
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -159,8 +153,6 @@ class FeedActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
         return super.onOptionsItemSelected(item)
     }
-
 }

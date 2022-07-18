@@ -1,6 +1,7 @@
 package com.asimodabas.instagram_clone.view
 
 import android.Manifest
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager

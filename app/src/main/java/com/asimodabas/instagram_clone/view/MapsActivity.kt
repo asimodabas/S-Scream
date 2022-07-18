@@ -130,7 +130,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
                 val latLng = LatLng(it.latitude.toDouble(), it.longitude.toDouble())
                 mMap.addMarker(MarkerOptions().position(latLng).title(it.name))
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-
             }
         }
     }
@@ -179,7 +178,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
         selectedLatitude = p0.latitude
         selectedLongitude = p0.longitude
-
     }
 
     fun save() {
