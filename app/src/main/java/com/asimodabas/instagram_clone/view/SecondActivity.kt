@@ -1,8 +1,8 @@
 package com.asimodabas.instagram_clone.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.asimodabas.instagram_clone.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {

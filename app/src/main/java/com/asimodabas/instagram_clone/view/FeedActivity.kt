@@ -28,7 +28,6 @@ class FeedActivity : AppCompatActivity() {
     private lateinit var feedAdapter: FeedRecyclerAdapter
     private var insanmi: Boolean? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFeedBinding.inflate(layoutInflater)

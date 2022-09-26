@@ -10,6 +10,6 @@ data class Post(
     val surname: String,
     val latitude: String,
     val longitude: String
-):Serializable {
+) : Serializable {
 
 }

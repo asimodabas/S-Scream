@@ -1,7 +1,6 @@
 package com.asimodabas.instagram_clone.adapter
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
