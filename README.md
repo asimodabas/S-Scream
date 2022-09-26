@@ -16,7 +16,7 @@ Sessiz Çığlık
 App Images
 --------------
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/71982171/148653897-5403031c-c3f5-48f7-9f34-032e4c520f17.png" alt="GIF" />
+  <img src="https://user-images.githubusercontent.com/71982171/183270688-a1deb04a-a2cb-4a42-b985-30b1a0f6d931.png" alt="GIF" />
   <img src="https://user-images.githubusercontent.com/71982171/148653904-355f8418-e976-4c95-ab82-0e1877547e98.png" alt="GIF" />
   <img src="https://user-images.githubusercontent.com/71982171/148654298-b06f7dd9-1f32-46f8-ad5f-11f4c92701b7.png" alt="GIF" />
   <img src="https://user-images.githubusercontent.com/71982171/148654297-63657b65-dd7e-4a3d-8a1e-469335d589ea.png" alt="GIF" />
