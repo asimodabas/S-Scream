@@ -49,7 +49,7 @@ class UploadActivity : AppCompatActivity() {
         registerLauncher()
 
         sharedPreferences = this.getSharedPreferences(
-            "com.asimodabas.instagram_clone.view",
+            "com.asimodabas.s-scream.view",
             MODE_PRIVATE
         )
 
@@ -69,7 +69,6 @@ class UploadActivity : AppCompatActivity() {
     }
 
     fun upload(insanmi: Boolean) {
-
         val uuid = UUID.randomUUID()
         val imageName = "$uuid.jpg"
 
@@ -132,7 +131,6 @@ class UploadActivity : AppCompatActivity() {
     }
 
     fun selectImage(view: View) {
-
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_EXTERNAL_STORAGE

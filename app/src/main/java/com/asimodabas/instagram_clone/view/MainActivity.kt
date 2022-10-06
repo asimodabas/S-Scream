@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signUpClicked() {
-
         val email = binding.emailText.text.toString()
         val password = binding.passwordText.text.toString()
 

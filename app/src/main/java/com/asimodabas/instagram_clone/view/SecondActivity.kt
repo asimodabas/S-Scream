@@ -16,20 +16,20 @@ class SecondActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.imageviewInsan.setOnClickListener {
-            insan()
+            human()
         }
         binding.imageviewHayvan.setOnClickListener {
-            hayvan()
+            animal()
         }
     }
 
-    fun insan() {
+    fun human() {
         val intent = Intent(this, FeedActivity::class.java)
         intent.putExtra("insanmi", true)
         startActivity(intent)
     }
 
-    fun hayvan() {
+    fun animal() {
         val intent = Intent(this, FeedActivity::class.java)
         intent.putExtra("insanmi", false)
         startActivity(intent)

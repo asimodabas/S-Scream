@@ -45,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sewsimage" />
+        app:srcCompat="@drawable/ic_add_image" />
 
     <EditText
         android:id="@+id/commentText"

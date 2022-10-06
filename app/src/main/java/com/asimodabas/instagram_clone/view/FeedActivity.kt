@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asimodabas.instagram_clone.R
@@ -135,7 +134,7 @@ class FeedActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.insta_menu, menu)
+        menuInflater.inflate(R.menu.scream_menu, menu)
 
         return super.onCreateOptionsMenu(menu)
     }

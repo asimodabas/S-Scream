@@ -51,7 +51,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapLon
 
         registerLauncher()
         sharedPreferences = this.getSharedPreferences(
-            "com.asimodabas.instagram_clone.view",
+            "com.asimodabas.s-scream.view",
             MODE_PRIVATE
         )
         trackBoolean = false
