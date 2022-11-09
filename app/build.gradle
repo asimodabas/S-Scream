@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -53,5 +54,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 
 }
