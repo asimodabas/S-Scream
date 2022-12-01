@@ -3,6 +3,7 @@ package com.asimodabas.instagram_clone.model
 import java.io.Serializable
 
 data class Post(
+    var searchUid: String,
     val email: String,
     val comment: String,
     val downloadUrl: String,

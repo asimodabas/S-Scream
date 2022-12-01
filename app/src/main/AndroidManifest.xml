@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.asimodabas.instagram_clone">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -19,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstagramClone">
-
+        <activity
+            android:name=".SplashScreen"
+            android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,24 +32,29 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".view.MapsActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.SecondActivity"
-            android:exported="false"
-            android:label="S-Scream"/>
-        <activity
             android:name=".view.UploadActivity"
             android:exported="false"
-            android:label="S-Scream"/>
+            android:label="S-Scream" />
         <activity
             android:name=".view.FeedActivity"
             android:exported="false"
-            android:label="S-Scream"/>
+            android:label="S-Scream" />
+        <activity
+            android:name=".view.SecondActivity"
+            android:exported="false"
+            android:label="S-Scream" />
         <activity
             android:name=".view.MainActivity"
+            android:exported="false"
+            android:label="S-Scream" />
+        <activity
+            android:name=".view.SplashScreen"
             android:exported="true"
             android:label="S-Scream">
             <intent-filter>

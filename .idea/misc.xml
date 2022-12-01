@@ -27,9 +27,15 @@
         <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/activity_maps.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/activity_second.xml" value="0.33" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/activity_upload.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/recycler_row.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/delete_advert_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/edit_advert_layout.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/edit_upl_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/recycler_row.xml" value="0.5" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/layout/report_user_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/menu/insta_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/WindoWss/S-Scream/app/src/main/res/menu/row_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

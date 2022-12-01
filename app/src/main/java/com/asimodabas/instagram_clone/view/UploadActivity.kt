@@ -85,9 +85,10 @@ class UploadActivity : AppCompatActivity() {
                     val downloadUrl = it.toString()
 
                     if (auth.currentUser != null) {
+                        val searchUid = auth.currentUser!!.uid
 
                         val postMap = hashMapOf<String, Any>()
-
+                        postMap.put("searchUid", searchUid)
                         postMap.put("downloadUrl", downloadUrl)
                         postMap.put("userEmail", auth.currentUser!!.email!!)
                         postMap.put("comment", binding.commentText.text.toString())
