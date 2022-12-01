@@ -7,6 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_register"
     tools:context=".view.fragment.RegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,12 +25,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/ic_login" />
+                android:src="@drawable/ic_login"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="5dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/dateOfBirthDateText"

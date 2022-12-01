@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.signUpButton.setOnClickListener {
-            signUpClicked()
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 
@@ -72,11 +72,5 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
             }
         }
-    }
-
-    fun signUpClicked() {
-
-        findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-
     }
 }
