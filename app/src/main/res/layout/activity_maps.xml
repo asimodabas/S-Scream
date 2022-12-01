@@ -24,7 +24,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#000000"
-        android:text="Save"
+        android:text="Kaydet"
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintHorizontal_bias="0.5"

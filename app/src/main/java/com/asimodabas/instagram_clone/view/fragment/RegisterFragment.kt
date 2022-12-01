@@ -14,8 +14,10 @@ import com.asimodabas.instagram_clone.databinding.BottomKvkkDialogBinding
 import com.asimodabas.instagram_clone.databinding.FragmentRegisterBinding
 import com.asimodabas.instagram_clone.view.activity.SecondActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -24,6 +26,7 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,24 +76,59 @@ class RegisterFragment : Fragment() {
 
     fun signUpClicked() {
 
+        val name = binding.nameEditText.text.toString()
+        val surname = binding.surnameEditText.text.toString()
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
+        val number = binding.numberEditText.text.toString()
+        val dateofBirth = binding.dateOfBirthDateText.text.toString()
+        val registrationTime = Timestamp.now()
 
-        if (email.equals("") || password.equals("")) {
+        if (name.equals("") ||
+            surname.equals("") ||
+            email.equals("") ||
+            password.equals("") ||
+            number.equals("") ||
+            dateofBirth.equals("")
+        ) {
             Toast.makeText(requireContext(), "Lütfen Tüm Boşlukları Doldurunuz", Toast.LENGTH_LONG)
                 .show()
         } else {
-            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
-                //Success
-                activity?.let {
-                    val intent = Intent(it, SecondActivity::class.java)
-                    it.startActivity(intent)
-                    it.finish()
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    val dataMap = HashMap<String, Any>()
+                    dataMap.put("name", name)
+                    dataMap.put("surname", surname)
+                    dataMap.put("email", email)
+                    dataMap.put("password", password)
+                    dataMap.put("number", number)
+                    dataMap.put("dateofBirth", dateofBirth)
+                    dataMap.put("registrationTime", registrationTime)
+
+                    db.collection("User").add(dataMap).addOnSuccessListener {
+                        binding.nameEditText.setText("")
+                        binding.surnameEditText.setText("")
+                        binding.emailEditText.setText("")
+                        binding.passwordEditText.setText("")
+                        binding.numberEditText.setText("")
+                        binding.dateOfBirthDateText.setText("")
+                        activity?.let {
+                            val intent = Intent(it, SecondActivity::class.java)
+                            it.startActivity(intent)
+                            it.finish()
+                        }
+
+                    }.addOnFailureListener {
+                        Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG)
+                            .show()
+                        binding.nameEditText.setText("")
+                        binding.surnameEditText.setText("")
+                        binding.emailEditText.setText("")
+                        binding.passwordEditText.setText("")
+                        binding.numberEditText.setText("")
+                        binding.dateOfBirthDateText.setText("")
+                    }
                 }
-            }.addOnFailureListener {
-                //Failed
-                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
-            }
         }
     }
 }

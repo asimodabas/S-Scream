@@ -43,7 +43,6 @@ class FeedRecyclerAdapter(
             intent.putExtra("selectedPost", postList.get(position))
             intent.putExtra("info", "old")
             activity.startActivity(intent)
-
         }
 
         holder.binding.imageView3.setOnClickListener {
@@ -64,8 +63,9 @@ class FeedRecyclerAdapter(
                         AlertDialog.Builder(mContext)
                             .setView(v)
                             .setPositiveButton("Güncelle") { dialog, _ ->
-
                                 if (dataControl()) {
+
+                                    //Edit Feed
 
                                     Toast.makeText(
                                         mContext,
@@ -74,7 +74,6 @@ class FeedRecyclerAdapter(
                                     )
                                         .show()
                                     dialog.dismiss()
-
                                 } else {
                                     Toast.makeText(
                                         mContext,
@@ -87,7 +86,6 @@ class FeedRecyclerAdapter(
                                 dialog.dismiss()
                             }.create()
                             .show()
-
                         true
                     }
                     R.id.delete_row -> {
@@ -97,9 +95,11 @@ class FeedRecyclerAdapter(
                         AlertDialog.Builder(mContext)
                             .setView(v)
                             .setPositiveButton("Evet") { dialog, _ ->
+
+                                //Delete Feed
+
                                 Toast.makeText(mContext, "İlanınız Siliniyor", Toast.LENGTH_LONG)
                                     .show()
-
                                 dialog.dismiss()
                             }
                             .setNegativeButton("Hayır") { dialog, _ ->
@@ -110,7 +110,6 @@ class FeedRecyclerAdapter(
                         true
                     }
                     R.id.report_row -> {
-
                         val v =
                             LayoutInflater.from(mContext).inflate(R.layout.report_user_layout, null)
                         val reportEditText = v.findViewById<EditText>(R.id.reportEditText)
@@ -125,7 +124,7 @@ class FeedRecyclerAdapter(
                                         "Şikayet Başarılı...",
                                         Toast.LENGTH_LONG
                                     ).show()
-                                }else{
+                                } else {
 
                                     Toast.makeText(
                                         mContext,
@@ -160,7 +159,6 @@ class FeedRecyclerAdapter(
 
         Picasso.get().load(postList.get(position).downloadUrl)
             .into(holder.binding.recyclerImageView2)
-
     }
 
     override fun getItemCount(): Int {

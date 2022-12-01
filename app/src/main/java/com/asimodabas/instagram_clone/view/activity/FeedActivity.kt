@@ -62,14 +62,11 @@ class FeedActivity : AppCompatActivity() {
 
                                 for (document in documents) {
                                     val searchUid = document.get("searchUid") as String
-
                                     val comment = document.get("comment") as String
                                     val userEmail = document.get("userEmail") as String
                                     val downloadUrl = document.get("downloadUrl") as String
-
                                     val name = document.get("name") as String
                                     val surname = document.get("surname") as String
-
                                     val latitude = document.get("latitude") as String
                                     val longitude = document.get("longitude") as String
 
@@ -149,6 +146,7 @@ class FeedActivity : AppCompatActivity() {
             auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
         return super.onOptionsItemSelected(item)
     }
