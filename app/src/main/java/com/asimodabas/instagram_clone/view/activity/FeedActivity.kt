@@ -1,4 +1,4 @@
-package com.asimodabas.instagram_clone.view
+package com.asimodabas.instagram_clone.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -136,7 +136,6 @@ class FeedActivity : AppCompatActivity() {
 
         val menuInflater = menuInflater
         menuInflater.inflate(R.menu.scream_menu, menu)
-
         return super.onCreateOptionsMenu(menu)
     }
 

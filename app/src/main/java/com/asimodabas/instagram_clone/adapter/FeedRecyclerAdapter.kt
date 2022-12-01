@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.asimodabas.instagram_clone.R
 import com.asimodabas.instagram_clone.databinding.RecyclerRowBinding
 import com.asimodabas.instagram_clone.model.Post
-import com.asimodabas.instagram_clone.view.MapsActivity
+import com.asimodabas.instagram_clone.view.activity.MapsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 

@@ -18,9 +18,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstagramClone">
-        <activity
-            android:name=".SplashScreen"
-            android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,27 +31,27 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".view.MapsActivity"
+            android:name=".view.activity.MapsActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.UploadActivity"
+            android:name=".view.activity.UploadActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.FeedActivity"
+            android:name=".view.activity.FeedActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.SecondActivity"
+            android:name=".view.activity.SecondActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="false"
             android:label="S-Scream" />
         <activity
-            android:name=".view.SplashScreen"
+            android:name=".view.activity.SplashScreen"
             android:exported="true"
             android:label="S-Scream">
             <intent-filter>

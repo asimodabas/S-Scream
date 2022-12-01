@@ -1,4 +1,4 @@
-package com.asimodabas.instagram_clone.view
+package com.asimodabas.instagram_clone.view.activity
 
 import android.content.Intent
 import android.content.SharedPreferences

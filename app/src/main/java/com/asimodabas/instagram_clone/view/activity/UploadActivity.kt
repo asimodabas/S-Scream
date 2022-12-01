@@ -1,4 +1,4 @@
-package com.asimodabas.instagram_clone.view
+package com.asimodabas.instagram_clone.view.activity
 
 import android.Manifest
 import android.content.Intent
@@ -96,7 +96,6 @@ class UploadActivity : AppCompatActivity() {
                         postMap.put("imageName", imageName)
                         postMap.put("latitude", sharedPreferences.getString("latitude", "0")!!)
                         postMap.put("longitude", sharedPreferences.getString("longitude", "0")!!)
-
                         postMap.put("name", binding.nameText.text.toString())
                         postMap.put("surname", binding.surnameText.text.toString())
 
