@@ -49,6 +49,10 @@ class LoginFragment : Fragment() {
         binding.signUpButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
+        binding.forgotPassTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
     }
 
     fun signInClicked() {
