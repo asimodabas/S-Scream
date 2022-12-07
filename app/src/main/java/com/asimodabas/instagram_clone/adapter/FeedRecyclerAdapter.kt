@@ -1,16 +1,19 @@
 package com.asimodabas.instagram_clone.adapter
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.PopupMenu
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.isNotEmpty
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.asimodabas.instagram_clone.R
 import com.asimodabas.instagram_clone.databinding.RecyclerRowBinding
@@ -20,13 +23,33 @@ import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 
 class FeedRecyclerAdapter(
-    val activity: Activity, private val postList: ArrayList<Post>, val mContext: Context
+    val mContext: Context
 ) :
-    RecyclerView.Adapter<FeedRecyclerAdapter.PostHolder>() {
+    RecyclerView.Adapter<FeedRecyclerAdapter.PostHolder>(), Filterable {
 
     class PostHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
+
+    private val diffUtil = object : DiffUtil.ItemCallback<Post>() {
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
+
+    var postList: List<Post>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
+
+    var postListFilter: List<Post>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostHolder {
         val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -39,10 +62,10 @@ class FeedRecyclerAdapter(
         holder.binding.recyclerCommentText.text = postList.get(position).comment
 
         holder.binding.layout.setOnClickListener {
-            val intent = Intent(activity, MapsActivity::class.java)
+            val intent = Intent(mContext, MapsActivity::class.java)
             intent.putExtra("selectedPost", postList.get(position))
             intent.putExtra("info", "old")
-            activity.startActivity(intent)
+            mContext.startActivity(intent)
         }
 
         holder.binding.imageView3.setOnClickListener {
@@ -163,5 +186,43 @@ class FeedRecyclerAdapter(
 
     override fun getItemCount(): Int {
         return postList.size
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val searchText = constraint.toString().lowercase()
+                postListFilter = if (searchText.isEmpty()) {
+                    postList
+                } else {
+                    val resultList = arrayListOf<Post>()
+                    for (row in postList) {
+                        row.surname.let { searchActivity ->
+                            row.name.let { searchDate ->
+                                row.comment.let { searchAddress ->
+                                    if (searchActivity.lowercase()
+                                            .contains(searchText) || searchDate.lowercase()
+                                            .contains(searchText) || searchAddress.lowercase()
+                                            .contains(searchText)
+                                    ) {
+                                        resultList.add(row)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    resultList
+                }
+
+                val filterResults = FilterResults()
+                filterResults.values = postListFilter
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                postListFilter = results?.values as List<Post>
+                recyclerListDiffer.submitList(postListFilter)
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asimodabas.instagram_clone.R
 import com.asimodabas.instagram_clone.adapter.FeedRecyclerAdapter
@@ -22,8 +23,8 @@ class FeedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFeedBinding
     private lateinit var auth: FirebaseAuth
+    private var postArrayList = arrayListOf<Post>()
     private lateinit var db: FirebaseFirestore
-    private lateinit var postArrayList: ArrayList<Post>
     private lateinit var feedAdapter: FeedRecyclerAdapter
     private var insanmi: Boolean? = null
 
@@ -38,13 +39,26 @@ class FeedActivity : AppCompatActivity() {
         auth = Firebase.auth
         db = Firebase.firestore
 
-        postArrayList = ArrayList<Post>()
-
         getData(insanmi!!)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        feedAdapter = FeedRecyclerAdapter(this, postArrayList, this)
+        feedAdapter = FeedRecyclerAdapter(this)
         binding.recyclerView.adapter = feedAdapter
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    feedAdapter.recyclerListDiffer.submitList(postArrayList.toList())
+                } else {
+                    feedAdapter.filter.filter(newText)
+                }
+                return false
+            }
+        })
     }
 
     private fun getData(insanmi: Boolean) {
@@ -81,6 +95,7 @@ class FeedActivity : AppCompatActivity() {
                                         longitude
                                     )
                                     postArrayList.add(post)
+                                    feedAdapter.recyclerListDiffer.submitList(postArrayList.toList())
                                 }
                                 feedAdapter.notifyDataSetChanged()
                             }
