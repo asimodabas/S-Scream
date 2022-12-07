@@ -13,5 +13,5 @@
 App GIF
 --------------
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/71982171/205139958-84faeff8-6b27-4d5b-8237-0304dd87c1b6.gif" alt="GIF" />
+  <img src="https://user-images.githubusercontent.com/71982171/206282707-86fec0ae-b030-4a7c-911f-15e5c0502fc5.gif" alt="GIF" />
 </p>
